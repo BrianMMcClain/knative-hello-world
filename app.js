@@ -5,7 +5,6 @@ const app = express();
 app.use(bodyParser.text({type: "*/*"}));
 
 app.post("/", function(req, res) {
-  const target = process.env.TARGET || "World";
   res.send("Hello, " + req.body + "!");
 });
 
