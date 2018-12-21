@@ -1,0 +1,23 @@
+apiVersion: serving.knative.dev/v1alpha1
+kind: Service
+metadata:
+  name: knative-hello-world-buildpack
+  namespace: default
+spec:
+  runLatest:
+    configuration:
+      build:
+        serviceAccountName: build-bot
+        source:
+          git:
+            url: https://github.com/BrianMMcClain/knative-hello-world.git
+            revision: master
+        template:
+          name: buildpack
+          arguments:
+          - name: IMAGE
+            value: docker.io/brianmmcclain/knative-hello-world:buildpack
+      revisionTemplate:
+        spec:
+          container:
+            image: docker.io/brianmmcclain/knative-hello-world:buildpack
