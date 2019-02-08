@@ -1,4 +1,4 @@
-FROM node:8.14.0-stretch-slim
+FROM node:10.15.1-stretch-slim
 
 WORKDIR /usr/src/app
 COPY . .
